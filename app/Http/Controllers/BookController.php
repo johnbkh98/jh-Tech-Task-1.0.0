@@ -22,6 +22,13 @@ class BookController extends Controller
         ]);
     }
 
+    public function indexPage(IndexRequest $request, Index $index)
+    {
+        return view('welcome', [
+            'data' => $index()
+        ]);
+    }
+
     public function store(StoreRequest $request, Store $store)
     {
         $book = $store($request->validated());
