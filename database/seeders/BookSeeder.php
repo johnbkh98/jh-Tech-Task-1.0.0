@@ -15,8 +15,13 @@ class BookSeeder extends Seeder
     {
         Book::truncate();
 
-        Book::factory()
+        $books = Book::factory()
             ->count(5)
             ->create();
+
+        $books->each(function ($book) {
+            $book->rating = rand(1, 10);
+            $book->save();
+        });
     }
 }
